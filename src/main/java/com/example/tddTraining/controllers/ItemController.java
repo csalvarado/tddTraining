@@ -38,7 +38,6 @@ public class ItemController {
 	@ExceptionHandler
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	private void itemNotFoundHandler(ItemNotFoundException ex) {
-		
 	}
 	
 }
