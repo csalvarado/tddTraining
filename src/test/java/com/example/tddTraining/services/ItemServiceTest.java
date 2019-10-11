@@ -160,7 +160,6 @@ public class ItemServiceTest {
 		cartItems.add(item3);
 		Item optional = new Item((long) 1, "camisa", "L", 0);
 		given(this.itemRepository.save(optional)).willReturn(optional);
-		
 		assertThat(itemService.updateStock(cartItems), equalTo(true));
 	}
 
