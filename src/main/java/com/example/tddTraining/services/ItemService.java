@@ -48,13 +48,13 @@ public class ItemService {
 	public List<Item> getItemsWithNoStock(List<Item> cartItems) {
 		//return items that doesn's have stock
 		return cartItems.stream()
-				.filter(i -> (itemRepository.findById(i.getId()).get().getStock() - i.getStock()) < 0)
-				.collect(Collectors.toList());
+						.filter(i -> (itemRepository.findById(i.getId()).get().getStock() - i.getStock()) < 0)
+						.collect(Collectors.toList());
 	}
 
 	public boolean updateStock(List<Item> cartItems) {
 		return cartItems.stream()
 				.filter(i -> (itemRepository.save(i) == null))
-				.count() == cartItems.size();
+				.count() == 0;
 	}
 }

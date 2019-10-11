@@ -147,6 +147,7 @@ public class ItemServiceTest {
 				assertThat(itemService.getItemsWithNoStock(cartItems).size(), equalTo(3));
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testUpdateStockOk() {
 		
@@ -158,9 +159,25 @@ public class ItemServiceTest {
 		cartItems.add(item1);
 		cartItems.add(item2);
 		cartItems.add(item3);
-		Item optional = new Item((long) 1, "camisa", "L", 0);
-		given(this.itemRepository.save(optional)).willReturn(optional);
+		Item i = new Item((long) 1, "camisa", "L", 0);
+		given(this.itemRepository.save(anyObject())).willReturn(i);
 		assertThat(itemService.updateStock(cartItems), equalTo(true));
+	}
+	@SuppressWarnings("deprecation")
+	@Test
+	public void testUpdateStockKO() {
+		
+		//list that will enter the function
+		List<Item> cartItems = new ArrayList<Item>();
+		Item item1 = new Item((long) 1, "camisa", "L", 50);
+		Item item2 = new Item((long) 2, "zapatos", "42", 20);
+		Item item3 = new Item((long) 3, "pantalon", "46", 25);
+		cartItems.add(item1);
+		cartItems.add(item2);
+		cartItems.add(item3);
+		Item i = null;
+		given(this.itemRepository.save(anyObject())).willReturn(i);
+		assertThat(itemService.updateStock(cartItems), equalTo(false));
 	}
 
 }
