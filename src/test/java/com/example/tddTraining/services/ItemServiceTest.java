@@ -147,7 +147,7 @@ public class ItemServiceTest {
 				assertThat(itemService.getItemsWithNoStock(cartItems).size(), equalTo(3));
 	}
 	
-	@SuppressWarnings("deprecation")
+
 	@Test
 	public void testUpdateStockOk() {
 		
@@ -160,10 +160,11 @@ public class ItemServiceTest {
 		cartItems.add(item2);
 		cartItems.add(item3);
 		Item i = new Item((long) 1, "camisa", "L", 0);
-		given(this.itemRepository.save(anyObject())).willReturn(i);
+		given(this.itemRepository.save(any())).willReturn(i);
 		assertThat(itemService.updateStock(cartItems), equalTo(true));
 	}
-	@SuppressWarnings("deprecation")
+	
+
 	@Test
 	public void testUpdateStockKO() {
 		
@@ -176,7 +177,7 @@ public class ItemServiceTest {
 		cartItems.add(item2);
 		cartItems.add(item3);
 		Item i = null;
-		given(this.itemRepository.save(anyObject())).willReturn(i);
+		given(this.itemRepository.save(any())).willReturn(i);
 		assertThat(itemService.updateStock(cartItems), equalTo(false));
 	}
 
