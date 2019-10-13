@@ -3,8 +3,7 @@ package com.example.tddTraining.entities;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.Before;
+
 import org.junit.Test;
 
 public class ItemTest {
